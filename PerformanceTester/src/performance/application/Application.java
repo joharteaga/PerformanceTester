@@ -7,6 +7,9 @@ package performance.application;
 
 import java.util.Arrays;
 import performance.sorting.AlgorithmInterface;
+import performance.sorting.BubbleSortClassic;
+import performance.sorting.BubbleSortOptimised;
+import performance.sorting.InsertionSort;
 import performance.sorting.QuickSort;
 
 /**
@@ -18,11 +21,11 @@ public class Application {
     public static void main(String[] args) {
         // TESTING
         
-        //int[] arr = {8, 4, 2, 6, 5, 9, 0, 3, 1, 7};
-        String[] arr = {"frank", "tom", "alice", "sam", "cletus", "zapata"};
+        int[] arr = {8, 4, 2, 6, 5, 9, 0, 3, 1, 7};
+        //String[] arr = {"frank", "tom", "alice", "sam", "cletus", "zapata"};
         System.out.println(Arrays.toString(arr));
         
-        AlgorithmInterface alg = new QuickSort();
+        AlgorithmInterface alg = new BubbleSortClassic();
         //List<AlgorithmInterface> list = new ArrayList<>();
         alg.sort(arr);
         
