@@ -6,6 +6,8 @@
 package performance.application;
 
 import java.util.Arrays;
+import performance.data.IntArrayGenerator;
+import performance.data.StringArrayGenerator;
 import performance.sorting.AlgorithmInterface;
 import performance.sorting.BubbleSortClassic;
 import performance.sorting.BubbleSortOptimised;
@@ -21,14 +23,20 @@ public class Application {
     public static void main(String[] args) {
         // TESTING
         
-        //int[] arr = {8, 4, 2, 6, 5, 9, 0, 3, 1, 7};
-        String[] arr = {"frank", "tom", "alice", "sam", "cletus", "zapata"};
-        System.out.println(Arrays.toString(arr));
+        IntArrayGenerator intArray = new IntArrayGenerator();
+        StringArrayGenerator strArray = new StringArrayGenerator();
         
-        AlgorithmInterface alg = new BubbleSortOptimised();
-        //List<AlgorithmInterface> list = new ArrayList<>();
-        alg.sort(arr);
+        System.out.println(Arrays.toString(intArray.getRandomIntArray(10)));
+        System.out.println(Arrays.toString(strArray.getRandomStringArray(5, 10)));
         
-        System.out.println(Arrays.toString(arr));
+//        //int[] arr = {8, 4, 2, 6, 5, 9, 0, 3, 1, 7};
+//        String[] arr = {"frank", "tom", "alice", "sam", "cletus", "zapata"};
+//        System.out.println(Arrays.toString(arr));
+//        
+//        AlgorithmInterface alg = new BubbleSortOptimised();
+//        //List<AlgorithmInterface> list = new ArrayList<>();
+//        alg.sort(arr);
+//        
+//        System.out.println(Arrays.toString(arr));
     }
 }
