@@ -104,4 +104,9 @@ public class QuickSort implements AlgorithmInterface {
         
         return idx + 1;
     }
+
+    @Override
+    public String getName() {
+        return "QuickSort";
+    }
 }

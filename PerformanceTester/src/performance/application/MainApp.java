@@ -5,8 +5,13 @@
  */
 package performance.application;
 
+import java.io.IOException;
 import java.util.Arrays;
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import performance.data.IntArrayGenerator;
 import performance.data.StringArrayGenerator;
@@ -23,40 +28,49 @@ import performance.sorting.SelectionSort;
  * @author joharteaga
  */
 public class MainApp extends Application {
+    private Stage primaryStage;
+    private BorderPane rootLayout;
     
     public static void main(String[] args) {
-        // TESTING
-        
-        IntArrayGenerator intArray = new IntArrayGenerator();
-        StringArrayGenerator strArray = new StringArrayGenerator();
-        
-        
-        int[] arr1 = intArray.getRandomBoundedIntArray(1000000, 0, 1000000);
-        int[] arr2 = new int[1000000];
-        
-        System.arraycopy(arr1, 0, arr2, 0, arr1.length);
-        //String[] arr = strArray.getRandomStringArray(10, 5);
-        System.out.println(Arrays.toString(arr1));
-        
-        AlgorithmInterface alg1 = new QuickSort();
-        AlgorithmInterface alg2 = new MergeSort();
-        
-        //List<AlgorithmInterface> list = new ArrayList<>();
-        
-        long startTime1 = System.currentTimeMillis();
-        alg1.sort(arr1);
-        long endTime1 = System.currentTimeMillis();
-        
-        long startTime2 = System.currentTimeMillis();
-        alg2.sort(arr2);
-        long endTime2 = System.currentTimeMillis();
-        
-        System.out.println("Performance:");
-        System.out.println("  Alg1: " + (endTime1 - startTime1));
-        System.out.println("  Alg2: " + (endTime2 - startTime2));
+        launch(args);
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        this.primaryStage = primaryStage;
+        this.primaryStage.setTitle("Performance Tester");
+        
+        initializeRoot();
+        
+        displayMainScene();
+    }
+
+    private void initializeRoot() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("/performance/gui/RootLayout.fxml"));
+            rootLayout = (BorderPane) loader.load();
+            
+            Scene scene = new Scene(rootLayout);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void displayMainScene() {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("/performance/gui/MainLayout.fxml"));
+            
+            AnchorPane mainLayout = (AnchorPane) loader.load();
+            
+            rootLayout.setCenter(mainLayout);
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

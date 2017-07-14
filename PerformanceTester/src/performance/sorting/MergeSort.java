@@ -141,5 +141,10 @@ public class MergeSort implements AlgorithmInterface {
             dataIndex++;
         }
     }
+
+    @Override
+    public String getName() {
+        return "MergeSort";
+    }
     
 }

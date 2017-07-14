@@ -62,4 +62,9 @@ public class SelectionSort implements AlgorithmInterface {
             
         }
     }  
+
+    @Override
+    public String getName() {
+        return "SelectionSort";
+    }
 }

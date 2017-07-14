@@ -7,6 +7,8 @@ package performance.sorting;
  */
 public interface AlgorithmInterface {
     
+    public String getName();
+    
     public void sort(int[] data);
     
     public void sort(String[] data);

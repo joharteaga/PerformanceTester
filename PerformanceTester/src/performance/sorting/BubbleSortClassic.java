@@ -44,5 +44,10 @@ public class BubbleSortClassic implements AlgorithmInterface {
             }
         }
     }
+
+    @Override
+    public String getName() {
+        return "BubbleSort (Classic)";
+    }
     
 }

@@ -58,5 +58,10 @@ public class BubbleSortOptimised implements AlgorithmInterface {
             }
         }
     }
+
+    @Override
+    public String getName() {
+        return "BubbleSort (Optimised)";
+    }
     
 }

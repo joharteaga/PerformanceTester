@@ -42,5 +42,10 @@ public class InsertionSort implements AlgorithmInterface {
             data[j + 1] = val;
         }
     }
+
+    @Override
+    public String getName() {
+        return "InsertionSort";
+    }
     
 }

@@ -16,6 +16,7 @@ public class StringArrayGenerator {
         this.random = new Random();
     }
     
+    
     //generates psuedorandom string array to size with elements ranging
     //from length 1 - stringLength (inclusive)
     public String[] getRandomStringArray(int size, int stringLength) {
@@ -36,6 +37,11 @@ public class StringArrayGenerator {
         }
         
         return array;
+    }
+    
+    //if no bound given, generate strings with element size up to 10
+    public String[] getRandomStringArray(int size) {
+        return getRandomStringArray(size, 10);
     }
     
     
