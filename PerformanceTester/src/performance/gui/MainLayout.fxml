@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gluonhq.charm.glisten.control.ToggleButtonGroup?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="performance.gui.MainLayoutController">
+   <children>
+      <SplitPane dividerPositions="0.5824053452115813" layoutX="354.0" layoutY="206.0" prefHeight="500.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="14.0" text="Sorting Algorithms" AnchorPane.leftAnchor="10.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <ButtonBar layoutX="5.0" layoutY="46.0" prefHeight="20.0" prefWidth="474.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="5.0">
+                     <buttons>
+                        <CheckBox mnemonicParsing="false" text="BubbleSort (Classic)" ButtonBar.buttonData="LEFT" />
+                        <CheckBox mnemonicParsing="false" text="BubbleSort (Optimised)" />
+                        <CheckBox mnemonicParsing="false" text="SelectionSort" ButtonBar.buttonData="RIGHT" />
+                     </buttons>
+                  </ButtonBar>
+                  <ButtonBar layoutX="5.0" layoutY="76.0" prefHeight="20.0" prefWidth="565.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+                     <buttons>
+                         <CheckBox mnemonicParsing="false" text="InsertionSort" ButtonBar.buttonData="LEFT">
+                           <padding>
+                              <Insets right="50.0" />
+                           </padding></CheckBox>
+                        <CheckBox mnemonicParsing="false" text="MergeSort" />
+                        <CheckBox mnemonicParsing="false" text="QuickSort" ButtonBar.buttonData="RIGHT" />
+                     </buttons>
+                  </ButtonBar>
+                  <Label layoutX="10.0" layoutY="130.0" text="Type of Array:" AnchorPane.leftAnchor="10.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <ToggleButtonGroup layoutX="114.0" layoutY="132.0" selectionType="SINGLE">
+                     <toggles>
+                        <RadioButton mnemonicParsing="false" text="String[]">
+                           <padding>
+                              <Insets right="15.0" />
+                           </padding>
+                        </RadioButton>
+                        <RadioButton mnemonicParsing="false" text="int[]" />
+                     </toggles>
+                  </ToggleButtonGroup>
+                  <Label layoutX="14.0" layoutY="171.0" text="Bounds:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="25.0" layoutY="200.0" text="Size of array:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField layoutX="114.0" layoutY="198.0" prefHeight="25.0" prefWidth="75.0" />
+                  <ButtonBar layoutX="320.0" layoutY="544.0" prefHeight="40.0" prefWidth="200.0" />
+                <Button layoutX="447.0" layoutY="572.0" mnemonicParsing="false" text="Run Tests" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <TextArea editable="false" prefHeight="598.0" prefWidth="372.0" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
