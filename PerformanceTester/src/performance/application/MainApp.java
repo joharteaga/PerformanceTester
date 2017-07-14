@@ -6,6 +6,8 @@
 package performance.application;
 
 import java.util.Arrays;
+import javafx.application.Application;
+import javafx.stage.Stage;
 import performance.data.IntArrayGenerator;
 import performance.data.StringArrayGenerator;
 import performance.sorting.AlgorithmInterface;
@@ -20,7 +22,7 @@ import performance.sorting.SelectionSort;
  *
  * @author joharteaga
  */
-public class Application {
+public class MainApp extends Application {
     
     public static void main(String[] args) {
         // TESTING
@@ -52,5 +54,9 @@ public class Application {
         System.out.println("Performance:");
         System.out.println("  Alg1: " + (endTime1 - startTime1));
         System.out.println("  Alg2: " + (endTime2 - startTime2));
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
     }
 }
