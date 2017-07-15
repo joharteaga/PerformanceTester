@@ -15,6 +15,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import performance.data.IntArrayGenerator;
 import performance.data.StringArrayGenerator;
+import performance.gui.MainLayoutController;
 import performance.sorting.AlgorithmInterface;
 import performance.sorting.BubbleSortClassic;
 import performance.sorting.BubbleSortOptimised;
@@ -68,6 +69,9 @@ public class MainApp extends Application {
             AnchorPane mainLayout = (AnchorPane) loader.load();
             
             rootLayout.setCenter(mainLayout);
+            
+            MainLayoutController controller = loader.getController();
+            controller.setMainApp(this);
             
         } catch (IOException e) {
             e.printStackTrace();

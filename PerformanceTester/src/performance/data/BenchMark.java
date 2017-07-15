@@ -44,38 +44,29 @@ class BenchMark {
     }
     
     public void run() {
-        System.out.println("starting run");
         if (dataString == null) {
-            ExecutorService threadPool = Executors.newFixedThreadPool(testList.size());
-            runIntTest(threadPool);
-            try {
-                while(!threadPool.awaitTermination(1, TimeUnit.MINUTES));
-            } catch (InterruptedException ex) {
-                Logger.getLogger(BenchMark.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            
+            runIntTest();
+            
         } else if (dataInt == null) {
-            ExecutorService threadPool = Executors.newFixedThreadPool(testList.size());
-            runStringTest(threadPool);
-            try {
-                while(!threadPool.awaitTermination(1, TimeUnit.MINUTES));
-            } catch (InterruptedException ex) {
-                Logger.getLogger(BenchMark.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            
+            runStringTest();
+
         }
         
         
     }
 
-    private void runIntTest(ExecutorService threadPool) {
-        System.out.println("starting int threads");
+    private void runIntTest() {
+        ExecutorService threadPool = Executors.newFixedThreadPool(testList.size());
         
-        for (int i = 0; i < testList.size(); i++) {
+        int size = testList.size();
+        for (int i = 0; i < size; i++) {
             threadPool.submit(new Runnable() {
                 public void run() {
                     // create thread and run sort 20 times, store average
                     AlgorithmInterface test = testList.pop();
-                    
-                    
+
                     long sum = 0;
                     for (int i = 0; i < 20; i++) {
                         int[] copy = Arrays.copyOf(dataInt, dataInt.length);
@@ -88,7 +79,7 @@ class BenchMark {
                     }
                     
                     double average = sum / (double)20;
-                    String result = test.getName() + ":\tAverage Sort Time: " 
+                    String result = test.getName() + ":\n\t\tAverage Sort Time(ms): " 
                             + average;
                     
                     finalResults.addLast(result);
@@ -97,12 +88,18 @@ class BenchMark {
         }
         threadPool.shutdown();
 
-        
+        try {
+            threadPool.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
+        } catch (InterruptedException e) {
+            System.out.println("Cannot wait");
+        }
     }
 
-    private void runStringTest(ExecutorService threadPool) {
+    private void runStringTest() {
+        ExecutorService threadPool = Executors.newFixedThreadPool(testList.size());
         
-        for (int i = 0; i < testList.size(); i++) {
+        int size = testList.size();
+        for (int i = 0; i < size; i++) {
             threadPool.submit(new Runnable() {
                 public void run() {
                     // create thread and run sort 20 times, store average
@@ -121,7 +118,7 @@ class BenchMark {
                     }
                     
                     double average = sum / (double)20;
-                    String result = test.getName() + ":\tAverage Sort Time (ms): " 
+                    String result = test.getName() + ":\n\t\tAverage Sort Time (ms): " 
                             + average;
                     
                     finalResults.addLast(result);
@@ -130,22 +127,22 @@ class BenchMark {
         }
         threadPool.shutdown();
         try {
-            while(!threadPool.awaitTermination(1, TimeUnit.MINUTES));
-        } catch (InterruptedException ex) {
-            Logger.getLogger(BenchMark.class.getName()).log(Level.SEVERE, null, ex);
+            threadPool.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
+        } catch (InterruptedException e) {
+            System.out.println("Cannot wait");
         }
     }
 
     String getResults() {
         StringBuilder sb = new StringBuilder();
-        
+
         sb.append("Sorting Performance Results:\n");
-        sb.append("============================\n\n");
+        sb.append("============================\n");
 
         String[] results = new String[finalResults.size()];
         finalResults.toArray(results);
-        for (int i = 0; i < results.length; i++) {
-            sb.append(results[i]);
+        for (String result : results) {
+            sb.append(result);
             sb.append("\n");
         }
         

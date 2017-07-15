@@ -34,7 +34,7 @@ public class sandbox {
         
         test.addTest(set);
         
-        System.out.println(test.runTests("int[]", 10000));
+        System.out.println(test.runTests("int[]", 1000));
         
         
     }
